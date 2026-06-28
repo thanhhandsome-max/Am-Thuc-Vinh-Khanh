@@ -230,9 +230,11 @@ namespace Backend.Controllers
             var baseUrl = GetRequiredSetting("VNPAY_URL", "Vnpay:Url");
             var tmnCode = GetRequiredSetting("VNPAY_TMN_CODE", "Vnpay:TmnCode");
             var hashSecret = GetRequiredSetting("VNPAY_HASH_SECRET", "Vnpay:HashSecret");
-            var returnUrl = _configuration["VNPAY_RETURN_URL"]
-                ?? _configuration["Vnpay:ReturnUrl"]
-                ?? $"{Request.Scheme}://{Request.Host}/api/payments/return";
+            var returnUrl = _configuration["VNPAY_RETURN_URL"] ?? _configuration["Vnpay:ReturnUrl"];
+            if (string.IsNullOrWhiteSpace(returnUrl))
+            {
+                returnUrl = $"{Request.Scheme}://{Request.Host}/api/payments/return";
+            }
 
             if (!string.IsNullOrWhiteSpace(clientReturnUrl))
             {
