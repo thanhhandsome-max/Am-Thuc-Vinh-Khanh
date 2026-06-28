@@ -1,6 +1,6 @@
 const defaultServerUrl = (() => {
   if (window.location.protocol === 'file:') {
-    return 'http://localhost:5080';
+    return 'https://am-thuc-vinh-khanh.onrender.com';
   }
   if (window.location.port === '5080' || window.location.port === '7089') {
     return window.location.origin;
