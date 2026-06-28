@@ -1,0 +1,932 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-06-17T04:40:32Z",
+    "timestamp_areas_base": "2026-06-16T17:52:02Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 943230072,
+  "lat": 10.7645472,
+  "lon": 106.7060547,
+  "tags": {
+    "amenity": "food_court",
+    "cuisine": "asian",
+    "name": "Quán Hủ Tiếu Mì Chú Sè"
+  }
+},
+{
+  "type": "node",
+  "id": 946794472,
+  "lat": 10.7645525,
+  "lon": 106.7036887,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "regional",
+    "name": "Cà Phê Spotlight"
+  }
+},
+{
+  "type": "node",
+  "id": 1776232862,
+  "lat": 10.7662887,
+  "lon": 106.7077614,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "chinese",
+    "name": "Nhà Hàng Hải Cảng"
+  }
+},
+{
+  "type": "node",
+  "id": 1777244221,
+  "lat": 10.7602951,
+  "lon": 106.6991702,
+  "tags": {
+    "addr:street": "Đường Hoàng Diệu",
+    "amenity": "restaurant",
+    "name": "Nhà Hàng Honeymoon"
+  }
+},
+{
+  "type": "node",
+  "id": 2954494133,
+  "lat": 10.7619120,
+  "lon": 106.7021560,
+  "tags": {
+    "amenity": "food_court",
+    "name": "Ốc Phát"
+  }
+},
+{
+  "type": "node",
+  "id": 3240763702,
+  "lat": 10.7647704,
+  "lon": 106.7015087,
+  "tags": {
+    "addr:district": "Quận 4",
+    "addr:housename": "Cafe Trần",
+    "addr:housenumber": "81",
+    "addr:postcode": "70000",
+    "addr:province": "TP.HCM",
+    "addr:street": "Bến Vân Đồn",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "internet_access": "yes",
+    "name": "Cà Phê Trần",
+    "smoking": "outside",
+    "wifi": "free"
+  }
+},
+{
+  "type": "node",
+  "id": 4349830999,
+  "lat": 10.7607921,
+  "lon": 106.7045826,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Nhà Hàng Nướng Chilli"
+  }
+},
+{
+  "type": "node",
+  "id": 4500809444,
+  "lat": 10.7653465,
+  "lon": 106.7021995,
+  "tags": {
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 4506005090,
+  "lat": 10.7622420,
+  "lon": 106.7015048,
+  "tags": {
+    "addr:housenumber": "chung cư h1",
+    "addr:street": "Vĩnh Khánh",
+    "amenity": "cafe",
+    "name": "Cà Phê Chế"
+  }
+},
+{
+  "type": "node",
+  "id": 4580754190,
+  "lat": 10.7608066,
+  "lon": 106.7046253,
+  "tags": {
+    "addr:housenumber": "128",
+    "addr:street": "Đường Vĩnh Khánh",
+    "amenity": "restaurant",
+    "cuisine": "vietnamese",
+    "internet_access": "wlan",
+    "name": "Quán Nướng Bơ",
+    "opening_hours": "Mo-Su 06:00-01:00",
+    "phone": "0909209949"
+  }
+},
+{
+  "type": "node",
+  "id": 4670574890,
+  "lat": 10.7624446,
+  "lon": 106.7016365,
+  "tags": {
+    "amenity": "restaurant",
+    "name:en": "sushiko",
+    "name:ja": "すしこ"
+  }
+},
+{
+  "type": "node",
+  "id": 4690507794,
+  "lat": 10.7586548,
+  "lon": 106.7008465,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Tiệm Hủ Tiếu Nhân Quán",
+    "name:vi": "hủ tiếu Nhân Quán"
+  }
+},
+{
+  "type": "node",
+  "id": 4884593121,
+  "lat": 10.7625790,
+  "lon": 106.7063092,
+  "tags": {
+    "addr:housenumber": "119",
+    "addr:street": "Đường Lê Văn Linh",
+    "amenity": "restaurant",
+    "name:en": "Bà Hai"
+  }
+},
+{
+  "type": "node",
+  "id": 5001514722,
+  "lat": 10.7595884,
+  "lon": 106.7115364,
+  "tags": {
+    "addr:housenumber": "30",
+    "addr:postcode": "70000",
+    "addr:street": "Đường Xóm Chiếu",
+    "amenity": "food_court",
+    "cuisine": "coffee_shop;tea",
+    "internet_access": "wlan",
+    "name": "Trà Sữa Topping",
+    "name:en": "Topping Milk Tea",
+    "opening_hours": "24/7",
+    "phone": "0862910288"
+  }
+},
+{
+  "type": "node",
+  "id": 5332444621,
+  "lat": 10.7639921,
+  "lon": 106.7013763,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cà Phê Quyên"
+  }
+},
+{
+  "type": "node",
+  "id": 5348828122,
+  "lat": 10.7552712,
+  "lon": 106.6992819,
+  "tags": {
+    "amenity": "restaurant",
+    "name:en": "Bánh Tráng Kęp"
+  }
+},
+{
+  "type": "node",
+  "id": 5477740824,
+  "lat": 10.7608622,
+  "lon": 106.6987086,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "vietnamese",
+    "name": "Quán Ăn Gia Khang"
+  }
+},
+{
+  "type": "node",
+  "id": 5532194622,
+  "lat": 10.7557379,
+  "lon": 106.7009890,
+  "tags": {
+    "amenity": "cafe",
+    "internet_access": "wlan",
+    "name": "Cà Phê Góc",
+    "name:en": "Corner"
+  }
+},
+{
+  "type": "node",
+  "id": 5565425321,
+  "lat": 10.7614216,
+  "lon": 106.7028293,
+  "tags": {
+    "addr:housenumber": "534",
+    "addr:street": "Đường Vĩnh Khánh",
+    "amenity": "food_court",
+    "name": "Ốc Oanh 1"
+  }
+},
+{
+  "type": "node",
+  "id": 5617113057,
+  "lat": 10.7645640,
+  "lon": 106.7071670,
+  "tags": {
+    "addr:city": "Ho Chi Minh City",
+    "addr:district": "Quận 4",
+    "addr:housenumber": "96",
+    "addr:street": "Ter Nguyen Tat Thanh",
+    "amenity": "cafe",
+    "brand": "The Coffee Bean & Tea Leaf",
+    "brand:wikidata": "Q1141384",
+    "cuisine": "coffee_shop",
+    "name": "The Coffee Bean & Tea Leaf",
+    "takeaway": "yes",
+    "website": "https://coffeebean.com.vn"
+  }
+},
+{
+  "type": "node",
+  "id": 5738254414,
+  "lat": 10.7547318,
+  "lon": 106.6924365,
+  "tags": {
+    "addr:city": "Quận 4",
+    "addr:district": "4",
+    "addr:housenumber": "M2-002",
+    "addr:province": "Hồ Chí Minh",
+    "addr:street": "M2-002 Chung cư Số 1 Tôn Thất Thuyết, Phường 1, Quận 4",
+    "addr:subdistrict": "1",
+    "amenity": "restaurant",
+    "name": "Bếp Bà Mập",
+    "opening_hours": "Mo-Sa 08:00-18:00",
+    "takeaway": "only"
+  }
+},
+{
+  "type": "node",
+  "id": 6281230086,
+  "lat": 10.7563833,
+  "lon": 106.7032344,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cà Phê Ngọt"
+  }
+},
+{
+  "type": "node",
+  "id": 6293086185,
+  "lat": 10.7646794,
+  "lon": 106.7058473,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cà Phê An"
+  }
+},
+{
+  "type": "node",
+  "id": 6318125507,
+  "lat": 10.7675515,
+  "lon": 106.7041873,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cà Phê The Plus"
+  }
+},
+{
+  "type": "node",
+  "id": 6339987860,
+  "lat": 10.7555823,
+  "lon": 106.7059888,
+  "tags": {
+    "amenity": "food_court",
+    "name": "Bánh Cuốn Cô Lan"
+  }
+},
+{
+  "type": "node",
+  "id": 6388617474,
+  "lat": 10.7558662,
+  "lon": 106.6933668,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cafe Chất"
+  }
+},
+{
+  "type": "node",
+  "id": 6388617786,
+  "lat": 10.7552146,
+  "lon": 106.6921887,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cà Phê Friend Zone"
+  }
+},
+{
+  "type": "node",
+  "id": 6388617835,
+  "lat": 10.7548497,
+  "lon": 106.6919486,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Quán 003"
+  }
+},
+{
+  "type": "node",
+  "id": 6388617837,
+  "lat": 10.7549623,
+  "lon": 106.6921163,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cà Phê Moschino"
+  }
+},
+{
+  "type": "node",
+  "id": 6388617839,
+  "lat": 10.7550374,
+  "lon": 106.6922329,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Hạt Cafe Quán"
+  }
+},
+{
+  "type": "node",
+  "id": 6388617840,
+  "lat": 10.7550750,
+  "lon": 106.6922792,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Coffee Box"
+  }
+},
+{
+  "type": "node",
+  "id": 6388617991,
+  "lat": 10.7551145,
+  "lon": 106.6920512,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Đồng Xanh Coffee"
+  }
+},
+{
+  "type": "node",
+  "id": 6388617992,
+  "lat": 10.7550796,
+  "lon": 106.6920016,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Trung Tâm Thẩm Mỹ Viện Kelly Beauty;Cà Phê Morning",
+    "shop": "beauty"
+  }
+},
+{
+  "type": "node",
+  "id": 6388617994,
+  "lat": 10.7550420,
+  "lon": 106.6919352,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Hải sản Thiên Ngọc;Bún đậu Phố Cổ"
+  }
+},
+{
+  "type": "node",
+  "id": 6646463544,
+  "lat": 10.7607643,
+  "lon": 106.6998257,
+  "tags": {
+    "addr:housenumber": "K44",
+    "addr:street": "Đường Hoàng Diệu",
+    "amenity": "restaurant",
+    "name": "Nhà Hàng Uncle Tea - Dimsum"
+  }
+},
+{
+  "type": "node",
+  "id": 6784133585,
+  "lat": 10.7608436,
+  "lon": 106.7047940,
+  "tags": {
+    "addr:housenumber": "122/37/15",
+    "addr:street": "Vĩnh Khánh",
+    "amenity": "restaurant",
+    "cuisine": "japanese",
+    "name": "Nhà Hàng Sushi Ko",
+    "phone": "00841222568152",
+    "website": "https://www.facebook.com/SUSHI.KO.VinhKhanh/"
+  }
+},
+{
+  "type": "node",
+  "id": 7023013389,
+  "lat": 10.7632196,
+  "lon": 106.7002338,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "vietnamese",
+    "name": "Hủ Tiếu Mì Hỷ Hào"
+  }
+},
+{
+  "type": "node",
+  "id": 7023023685,
+  "lat": 10.7574411,
+  "lon": 106.7002611,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Quán Bún Mắm 144"
+  }
+},
+{
+  "type": "node",
+  "id": 7023024085,
+  "lat": 10.7594098,
+  "lon": 106.6987798,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Mì Quảng Phan"
+  }
+},
+{
+  "type": "node",
+  "id": 7023364485,
+  "lat": 10.7612594,
+  "lon": 106.6999017,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Quán Bún Bò Huế - Vinh Hiền"
+  }
+},
+{
+  "type": "node",
+  "id": 7560016937,
+  "lat": 10.7566475,
+  "lon": 106.7027713,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Đường số 9",
+    "amenity": "cafe",
+    "name": "Cà Phê Mộc Quán"
+  }
+},
+{
+  "type": "node",
+  "id": 7686942401,
+  "lat": 10.7647004,
+  "lon": 106.7059021,
+  "tags": {
+    "addr:city": "Thành phố Hồ Chí Minh",
+    "addr:district": "Quận 4",
+    "addr:housenumber": "58",
+    "addr:postcode": "70000",
+    "addr:province": "Ho Chi Minh",
+    "addr:street": "Đường Hoàng Diệu",
+    "addr:subdistrict": "Phường 12",
+    "amenity": "restaurant",
+    "cuisine": "italian;vietnamese",
+    "delivery": "yes",
+    "internet_access": "yes",
+    "name": "Quán Ăn Cô Tư",
+    "opening_hours": "Mo-Fr 08:00-17:00",
+    "opening_hours:covid19": "Mo-Sa 07:00-13:00",
+    "phone": "070 342 6506",
+    "reservation": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8239099592,
+  "lat": 10.7551388,
+  "lon": 106.7068343,
+  "tags": {
+    "addr:city": "Ho Chi Minh City",
+    "addr:district": "Quận 4",
+    "addr:housenumber": "243/42B/38",
+    "addr:postcode": "72800",
+    "addr:province": "Hồ Chí Minh",
+    "addr:street": "Tôn Đản",
+    "addr:subdistrict": "Phường 15",
+    "amenity": "food_court",
+    "cuisine": "vietnamese",
+    "delivery": "yes",
+    "name": "Khô Bò Đen Hai Tèo",
+    "opening_hours": "24/7",
+    "phone": "0906887056",
+    "website": "https://www.facebook.com/khobodenhaiteo"
+  }
+},
+{
+  "type": "node",
+  "id": 8305431617,
+  "lat": 10.7580147,
+  "lon": 106.6999221,
+  "tags": {
+    "addr:housenumber": "168",
+    "addr:street": "Đường Khánh Hội",
+    "amenity": "cafe",
+    "brand": "Cộng Cà Phê",
+    "brand:wikidata": "Q63864181",
+    "cuisine": "coffee_shop;vietnamese",
+    "name": "Cộng Cà Phê",
+    "name:en": "Cong Coffee",
+    "name:vi": "Cộng Cà Phê",
+    "takeaway": "yes",
+    "website": "https://congcaphe.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 8358826317,
+  "lat": 10.7664367,
+  "lon": 106.7042668,
+  "tags": {
+    "addr:housenumber": "34",
+    "addr:postcode": "700000",
+    "addr:street": "Đường Bến Vân Đồn",
+    "amenity": "cafe",
+    "cuisine": "cake;coffee_shop;sandwich;tea",
+    "name:en": "Nap",
+    "opening_hours": "Mo-Su 06:30-21:00",
+    "phone": "028 3829 0583"
+  }
+},
+{
+  "type": "node",
+  "id": 9584833472,
+  "lat": 10.7611764,
+  "lon": 106.7026939,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "seafood",
+    "name": "Nhà Hàng Ốc Loan"
+  }
+},
+{
+  "type": "node",
+  "id": 9584833474,
+  "lat": 10.7614355,
+  "lon": 106.7026723,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "seafood",
+    "name": "Quán Ốc Vũ"
+  }
+},
+{
+  "type": "node",
+  "id": 9584888584,
+  "lat": 10.7589186,
+  "lon": 106.6987722,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Hàng Dương Quán Quận 4"
+  }
+},
+{
+  "type": "node",
+  "id": 9589471582,
+  "lat": 10.7592150,
+  "lon": 106.6994237,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "asian",
+    "name": "Long Xuyên Quán 2 - Cơm Tấm Bánh Tằm Bì"
+  }
+},
+{
+  "type": "node",
+  "id": 10813698530,
+  "lat": 10.7666718,
+  "lon": 106.7040962,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Highlands Coffee",
+    "brand:wikidata": "Q5759361",
+    "cuisine": "coffee_shop;vietnamese",
+    "name": "Highlands Coffee",
+    "name:en": "Highlands Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10813698532,
+  "lat": 10.7668418,
+  "lon": 106.7040273,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11055922106,
+  "lat": 10.7640350,
+  "lon": 106.7004839,
+  "tags": {
+    "amenity": "cafe",
+    "name:en": "Sang cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11059884809,
+  "lat": 10.7605562,
+  "lon": 106.7017302,
+  "tags": {
+    "amenity": "cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11287674769,
+  "lat": 10.7608212,
+  "lon": 106.7011591,
+  "tags": {
+    "addr:housenumber": "34",
+    "addr:street": "Cư xá Vĩnh Hội",
+    "amenity": "cafe",
+    "contact:facebook": "hana.smoothie",
+    "contact:instagram": "hana.smoothie",
+    "internet_access": "wlan",
+    "name": "Hana - Sinh Tố - Nước Ép",
+    "name:en": "Hana Smoothie",
+    "opening_hours": "Fr-We 07:30-21:00; Th 08:00-21:00",
+    "phone": "+84937026622",
+    "website": "https://hanasmoothie.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 11609621387,
+  "lat": 10.7653742,
+  "lon": 106.7049428,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Phở Thìn By SOL - Q4"
+  }
+},
+{
+  "type": "node",
+  "id": 11609638683,
+  "lat": 10.7648051,
+  "lon": 106.7040088,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Linh.kitchen"
+  }
+},
+{
+  "type": "node",
+  "id": 11829791873,
+  "lat": 10.7618222,
+  "lon": 106.6994692,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cô Ba"
+  }
+},
+{
+  "type": "node",
+  "id": 11974364477,
+  "lat": 10.7562392,
+  "lon": 106.7021606,
+  "tags": {
+    "addr:city": "Hồ Chí Minh",
+    "addr:district": "Quận 4",
+    "addr:housenumber": "số 9 lô C",
+    "addr:postcode": "70000",
+    "addr:province": "Thành phố Hồ Chí Minh",
+    "addr:street": "Đường Vĩnh Hội",
+    "addr:subdistrict": "Phường 04",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop;bubble_tea;juice",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "name": "CAFECUB",
+    "opening_hours": "Mo-Su 06:00-22:00",
+    "outdoor_seating": "yes",
+    "phone": "+84 906842882",
+    "website": "https://cafecub.vn"
+  }
+},
+{
+  "type": "node",
+  "id": 12531358139,
+  "lat": 10.7587290,
+  "lon": 106.7005406,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "brand": "The Coffee House",
+    "brand:wikidata": "Q60775742",
+    "cuisine": "coffee_shop;vietnamese",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "The Coffee House",
+    "name:en": "The Coffee House",
+    "power_supply": "yes",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "toilets:access": "customers",
+    "toilets:unisex": "yes",
+    "toilets:wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13074116952,
+  "lat": 10.7602288,
+  "lon": 106.7018137,
+  "tags": {
+    "addr:housenumber": "T6",
+    "addr:street": "Đường Nguyễn Hữu Hào",
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "check_date": "2025-08-16",
+    "cuisine": "vietnamese",
+    "diet:gluten_free": "yes",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "only",
+    "indoor_seating": "yes",
+    "name": "Nhà Hàng Thuần Chay Nhất Tâm",
+    "opening_hours": "Mo-Su 09:00-14:00,16:00-21:00",
+    "outdoor_seating": "no",
+    "phone": "+84938638693",
+    "smoking": "no",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13080894849,
+  "lat": 10.7586282,
+  "lon": 106.7000053,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Đường Số 10C",
+    "alt_name": "Fein Café",
+    "amenity": "cafe",
+    "check_date": "2025-08-19",
+    "contact:instagram": "https://www.instagram.com/fein.kafe",
+    "name": "Fein Kafe",
+    "outdoor_seating": "yes",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "phone": "+84 988226145",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13246983501,
+  "lat": 10.7539123,
+  "lon": 106.6995375,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "breakfast;noodles;vietnamese",
+    "name:vi": "Quán chay Minh Thành"
+  }
+},
+{
+  "type": "node",
+  "id": 13251941550,
+  "lat": 10.7633733,
+  "lon": 106.7076661,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "cuisine": "vietnamese",
+    "diet:gluten_free": "yes",
+    "diet:halal": "yes",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "only",
+    "indoor_seating": "yes",
+    "name": "Quán Chay Thanh Lạc",
+    "outdoor_seating": "no",
+    "phone": "+84908008525",
+    "smoking": "no",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13524055763,
+  "lat": 10.7634316,
+  "lon": 106.7036329,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Cơm tấm chị hồng Calmette"
+  }
+},
+{
+  "type": "node",
+  "id": 13525371773,
+  "lat": 10.7589230,
+  "lon": 106.7067455,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Quán Ốc"
+  }
+},
+{
+  "type": "node",
+  "id": 13555998781,
+  "lat": 10.7608349,
+  "lon": 106.7067380,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Bún thịt nướng Cô Nga"
+  }
+},
+{
+  "type": "node",
+  "id": 13633833869,
+  "lat": 10.7531205,
+  "lon": 106.6991406,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "changing_table": "no",
+    "cuisine": "vietnamese",
+    "diet:gluten_free": "yes",
+    "diet:halal": "only",
+    "diet:vegan": "only",
+    "diet:vegetarian": "only",
+    "indoor_seating": "yes",
+    "name": "Quán Chay Nấm Hân",
+    "opening_hours": "Mo-Su 08:00-13:00,16:00-21:00",
+    "outdoor_seating": "no",
+    "payment:credit_cards": "no",
+    "payment:debit_cards": "no",
+    "phone": "+84877887889",
+    "smoking": "no",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13674757601,
+  "lat": 10.7646988,
+  "lon": 106.7050879,
+  "tags": {
+    "addr:housenumber": "70",
+    "addr:street": "Nguyễn Trường Tộ",
+    "amenity": "restaurant",
+    "check_date": "2026-03-24",
+    "check_date:opening_hours": "2026-03-24",
+    "name": "Bún Bò 5T",
+    "opening_hours": "Mo-Su 06:00-21:00",
+    "phone": "+84949833668",
+    "website:menu": "https://humble.asia/bun-bo-5t/quan-4/"
+  }
+},
+{
+  "type": "node",
+  "id": 13827508880,
+  "lat": 10.7642025,
+  "lon": 106.7032835,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "changing_table": "no",
+    "cuisine": "vietnamese",
+    "diet:gluten_free": "yes",
+    "diet:halal": "yes",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "only",
+    "indoor_seating": "yes",
+    "name": "Quán Chay Cỏ Ba Lá",
+    "opening_hours": "Mo-Su 10:00-21:00",
+    "outdoor_seating": "no",
+    "payment:credit_cards": "no",
+    "payment:debit_cards": "no",
+    "smoking": "no",
+    "toilets:wheelchair": "no",
+    "wheelchair": "limited"
+  }
+}
+
+  ]
+}

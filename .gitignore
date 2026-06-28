@@ -1,0 +1,52 @@
+.vs/
+Backend/packages/
+Backend/wwwroot/audio/
+node_modules/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+*[Pp]ublish/
+
+# User-specific files & local settings
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vscode/
+
+# Local configuration overrides (Secrets)
+Backend/appsettings.Development.json
+
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Operating System files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+.DS_Store?
+[Dd]ownloads/
+
+# Log files
+*.log
+ 
+# Database
+Backend/*.db
+Backend/*.db-shm
+Backend/*.db-wal
+
+# Generated Files
+Backend/wwwroot/audio/*.mp3
+Backend/wwwroot/avatars/*
+!Backend/wwwroot/avatars/.gitkeep
+Backend/wwwroot/images/*
+!Backend/wwwroot/images/.gitkeep
+
+Backend/appsettings.Development.json
+Backend/appsettings.Development.json

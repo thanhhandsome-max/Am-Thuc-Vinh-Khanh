@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng Ký Chủ Quán - TrackingFoods</title>
+  <link rel="stylesheet" href="style.css?v=4">
+  
+  <!-- Leaflet Map library -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <style>
+    body {
+      overflow-y: auto;
+      height: auto;
+      min-height: 100vh;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    .register-container {
+      background: var(--panel-bg);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 40px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      animation: fadeIn 0.4s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .register-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .register-header h2 {
+      color: var(--primary-color);
+      font-size: 24px;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+    .register-header p {
+      color: var(--text-gray);
+      font-size: 13px;
+    }
+    .form-row {
+      display: flex;
+      gap: 20px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+      flex: 1;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+      color: var(--text-gray);
+    }
+    .form-control {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--text-white);
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 8px rgba(255, 122, 0, 0.25);
+    }
+    #map-select {
+      height: 200px;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 20px;
+    }
+    .register-btn {
+      width: 100%;
+      padding: 14px;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .error-msg {
+      color: #ff3333;
+      font-size: 13px;
+      text-align: center;
+      margin-top: 15px;
+      min-height: 20px;
+    }
+    .success-msg {
+      color: #00ff66;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+    .login-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 13px;
+      color: var(--text-gray);
+    }
+    .login-link a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particle-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none;"></canvas>
+  <div class="register-container">
+    <div class="register-header">
+      <h2>ĐĂNG KÝ CHỦ QUÁN</h2>
+      <p>Đăng ký thông tin và địa điểm để đưa quán ăn lên bản đồ thuyết minh</p>
+    </div>
+
+    <form id="register-form">
+      <h3 style="font-size: 16px; color: var(--primary-color); margin-bottom: 15px; border-bottom: 1px solid rgba(255,122,0,0.2); padding-bottom: 6px;">1. Thông tin tài khoản chủ quán</h3>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="username">Tên đăng nhập</label>
+          <input type="text" id="username" class="form-control" placeholder="Tên đăng nhập" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Mật khẩu</label>
+          <input type="password" id="password" class="form-control" placeholder="Mật khẩu" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fullname">Họ và Tên chủ quán</label>
+          <input type="text" id="fullname" class="form-control" placeholder="Họ và Tên" required>
+        </div>
+        <div class="form-group">
+          <label for="cccd">Số CCCD (Thông tin bảo mật - Mã hóa PII)</label>
+          <input type="text" id="cccd" class="form-control" placeholder="Số căn cước công dân" required pattern="[0-9]{9,12}" title="Vui lòng nhập đúng định dạng CCCD 9-12 số">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone">Số điện thoại</label>
+          <input type="tel" id="phone" class="form-control" placeholder="Số điện thoại liên hệ" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Địa chỉ Email</label>
+          <input type="email" id="email" class="form-control" placeholder="Địa chỉ email" required>
+        </div>
+      </div>
+
+      <h3 style="font-size: 16px; color: var(--primary-color); margin-top: 15px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,122,0,0.2); padding-bottom: 6px;">2. Thông tin quán ăn đăng ký</h3>
+
+      <div class="form-group">
+        <label for="stallName">Tên quán ăn</label>
+        <input type="text" id="stallName" class="form-control" placeholder="Ví dụ: Ốc Oanh, Phá lấu Cô Thảo" required>
+      </div>
+
+      <div class="form-group">
+        <label for="stallAddress">Địa chỉ quán ăn</label>
+        <input type="text" id="stallAddress" class="form-control" placeholder="Số nhà, Tên đường, Phường, Quận 4" required>
+      </div>
+
+      <div class="form-group">
+        <label>Chọn vị trí quán của bạn trên bản đồ Quận 4 dưới đây:</label>
+        <div id="map-select"></div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="latitude">Vĩ độ (Latitude)</label>
+          <input type="number" id="latitude" class="form-control" step="any" readonly required>
+        </div>
+        <div class="form-group">
+          <label for="longitude">Kinh độ (Longitude)</label>
+          <input type="number" id="longitude" class="form-control" step="any" readonly required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Giới thiệu thuyết minh quán ăn (Lịch sử, món nổi tiếng...)</label>
+        <textarea id="description" class="form-control" style="height: 100px; resize: vertical;" placeholder="Nhập bài thuyết minh chi tiết bằng tiếng Việt..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="menuImages">Hình ảnh thực đơn quán ăn (Menu - Chọn nhiều ảnh):</label>
+        <input type="file" id="menuImages" class="form-control" accept="image/jpeg, image/png, image/webp" multiple>
+      </div>
+
+      <button type="submit" class="btn register-btn">Gửi Đơn Đăng Ký</button>
+
+      <div class="error-msg" id="error-message"></div>
+      <div class="success-msg" id="success-message"></div>
+    </form>
+
+    <div class="login-link">
+      Đã có tài khoản? <a href="login.html">Đăng nhập tại đây</a>
+    </div>
+  </div>
+
+  <script src="register-owner.js"></script>
+  <script src="particles.js"></script>
+</body>
+</html>
+

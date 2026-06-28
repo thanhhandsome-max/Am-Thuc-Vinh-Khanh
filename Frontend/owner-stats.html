@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Thống kê lượt ghé - Chủ quán</title>
+    <link rel="stylesheet" href="style.css?v=4" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<style>
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        background: transparent;
+    }
+
+    .stats-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 16px;
+    }
+
+    .visit-filter-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--text-gray);
+    }
+
+    .visit-filter-item input {
+      min-width: 140px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      color: var(--text-white);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-family: inherit;
+    }
+    .panel {
+        background: var(--panel-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 18px;
+        width: 100%;
+    }
+
+    .panel-title {
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+    }
+
+    .filters {
+        display: flex;
+        gap: 10px;
+        align-items: end;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+    }
+
+    canvas {
+        width: 100% !important;
+        height: 320px !important;
+    }
+
+    /* Ẩn nút Quay lại khi trong iframe */
+    .back-btn-wrapper {
+        display: none;
+    }
+</style>
+<script>
+    // Ẩn nút Quay lại nếu đang trong iframe
+    if (window.self !== window.top) {
+        const backBtn = document.querySelector('a[href="owner.html"]');
+        if (backBtn) backBtn.closest('div').style.display = 'none';
+    }
+</script>
+</head>
+
+<body>
+    <main class="stats-container">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <h2 style="margin:0; font-size:16px;">Thống kê lượt ghé - Quán của bạn</h2>
+        <div class="back-btn-wrapper">
+            <a href="owner.html" class="btn">Quay lại trang Chủ</a>
+        </div>
+    </div>
+        <div class="panel">
+            <div class="panel-title">Biểu đồ lượt ghé theo ngày (chỉ quán của bạn)</div>
+            <div class="filters">
+                <label class="visit-filter-item">
+                    Từ ngày
+                    <input type="date" id="os-from-date" class="form-control">
+                </label>
+                <label class="visit-filter-item">
+                    Đến ngày
+                    <input type="date" id="os-to-date" class="form-control">
+                </label>
+                <div style="display:flex; gap:8px; align-items:center;">
+                    <button id="os-apply" class="btn">Áp dụng</button>
+                    <button id="os-refresh" class="btn" style="background: rgba(255,255,255,0.04);">Làm mới</button>
+                </div>
+            </div>
+
+            <div>
+                <canvas id="os-visit-chart"></canvas>
+            </div>
+            <div id="os-status" style="margin-top:10px; color:var(--text-gray); font-size:13px;"></div>
+        </div>
+    </main>
+
+    <script src="owner-stats.js"></script>
+</body>
+
+</html>

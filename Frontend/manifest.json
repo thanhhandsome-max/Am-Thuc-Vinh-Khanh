@@ -1,0 +1,17 @@
+﻿{
+  "short_name": "TrackingFoods",
+  "name": "Ốc Quận 4 - Audio Guide & AI Assistant",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/857/857681.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#12121A",
+  "theme_color": "#FF7A00",
+  "display": "standalone",
+  "orientation": "portrait"
+}
+

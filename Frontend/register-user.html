@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng Ký Người Dùng - TrackingFoods</title>
+  <link rel="stylesheet" href="style.css?v=4">
+  <style>
+    body {
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 32px 20px;
+      background-image: radial-gradient(circle at 10% 20%, rgba(255, 122, 0, 0.08) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 40%);
+    }
+    .register-container {
+      width: 100%;
+      max-width: 480px;
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(20px);
+      animation: fadeIn 0.35s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .register-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .register-header h2 {
+      margin: 0 0 8px;
+      color: var(--primary-color);
+      font-size: 26px;
+      font-weight: 800;
+    }
+    .register-header p {
+      margin: 0;
+      color: var(--text-gray);
+      font-size: 13px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+      color: var(--text-gray);
+    }
+    .form-control {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 12px 14px;
+      color: var(--text-white);
+      font-size: 14px;
+      outline: none;
+    }
+    .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.15);
+    }
+    .register-btn {
+      width: 100%;
+      margin-top: 8px;
+      padding: 14px;
+      font-size: 14px;
+    }
+    .error-msg, .success-msg {
+      min-height: 20px;
+      margin-top: 14px;
+      text-align: center;
+      font-size: 13px;
+    }
+    .error-msg { color: #ff4d4f; }
+    .success-msg { color: #00ff88; }
+    .back-link {
+      display: block;
+      margin-top: 18px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-gray);
+      text-decoration: none;
+    }
+    .back-link:hover { color: var(--primary-color); }
+  </style>
+</head>
+<body>
+  <canvas id="particle-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none;"></canvas>
+  <div class="register-container">
+    <div class="register-header">
+      <h2>ĐĂNG KÝ NGƯỜI DÙNG</h2>
+      <p>Tạo tài khoản để lưu lịch sử đăng nhập và sử dụng các tính năng của ứng dụng</p>
+    </div>
+
+    <form id="register-user-form">
+      <div class="form-group">
+        <label for="username">Tên đăng nhập</label>
+        <input type="text" id="username" class="form-control" placeholder="Nhập tên đăng nhập" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mật khẩu</label>
+        <input type="password" id="password" class="form-control" placeholder="Nhập mật khẩu" required>
+      </div>
+
+      <div class="form-group">
+        <label for="fullName">Họ và tên</label>
+        <input type="text" id="fullName" class="form-control" placeholder="Nhập họ và tên" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phoneNumber">Số điện thoại</label>
+        <input type="tel" id="phoneNumber" class="form-control" placeholder="Nhập số điện thoại">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" class="form-control" placeholder="Nhập email">
+      </div>
+
+      <button type="submit" class="btn register-btn">Đăng Ký</button>
+
+      <div class="error-msg" id="error-message"></div>
+      <div class="success-msg" id="success-message"></div>
+    </form>
+
+    <a href="login.html" class="back-link">← Quay lại đăng nhập</a>
+  </div>
+
+  <script src="register-user.js"></script>
+  <script src="particles.js"></script>
+</body>
+</html>
+

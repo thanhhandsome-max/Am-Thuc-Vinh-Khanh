@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>TrackingFoods - Audio Guide & AI Assistant</title>
+  <!-- PWA Metadata -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <meta name="theme-color" content="#000000">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="TrackingFoods">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/857/857681.png">
+
+  <!-- Leaflet Map library -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Local stylesheet -->
+  <link rel="stylesheet" href="style.css?v=4">
+  <script>
+    // Diagnostic: mark that HTML was parsed
+    console.debug('index.html parsed');
+  </script>
+</head>
+
+<body>
+
+  <!-- Splash Screen Intro -->
+  <div id="splash-intro" class="splash-intro">
+    <canvas id="particle-canvas"
+      style="position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;"></canvas>
+    <div class="water-drop"></div>
+    <div class="ripple-effect"></div>
+    <div class="splash-logo">
+      <h1>TrackingFoods</h1>
+    </div>
+  </div>
+
+  <!-- Header Section -->
+  <header class="header-panel">
+    <div class="title-section">
+      <h1 id="app-title">TrackingFoods</h1>
+      <span>OFFLINE AUDIO GUIDE & AI TOUR GUIDE</span>
+    </div>
+
+    <div class="config-section">
+      <div class="gps-toggle">
+        <label id="gps-switch-label">GPS Mocking / Real</label>
+        <label class="switch">
+          <input type="checkbox" id="gps-switch">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <button class="btn" id="sim-walk-btn"
+        style="background: #10B981; font-size: 12px; padding: 6px 12px; border-radius: 6px; cursor: pointer; transition: all 0.2s;">🚶
+        Mô phỏng đi bộ</button>
+
+      <div class="input-group" style="border: none; background: transparent; padding: 0;">
+        <input type="text" id="server-url" value="" style="display: none;">
+        <select id="lang-picker" style="display: none;">
+          <option value="en">English</option>
+          <option value="vi" selected>Tiếng Việt</option>
+          <option value="ja">日本語</option>
+          <option value="ko">한국어</option>
+          <option value="zh">中文</option>
+        </select>
+
+        <!-- Custom Language Picker with flags -->
+        <div class="custom-lang-picker" id="custom-lang-picker">
+          <button class="lang-btn" id="lang-btn-current" type="button">
+            <img src="https://flagcdn.com/w40/vn.png" alt="vi" class="flag-icon" id="current-lang-flag">
+            <span class="lang-text" id="current-lang-text">Tiếng Việt</span>
+            <span class="arrow" style="font-size: 8px; margin-left: 4px;">▼</span>
+          </button>
+          <div class="lang-dropdown" id="lang-dropdown-menu">
+            <div class="lang-item" data-value="vi">
+              <img src="https://flagcdn.com/w40/vn.png" alt="vi" class="flag-icon">
+              <span>Tiếng Việt</span>
+            </div>
+            <div class="lang-item" data-value="en">
+              <img src="https://flagcdn.com/w40/gb.png" alt="en" class="flag-icon">
+              <span>English</span>
+            </div>
+            <div class="lang-item" data-value="ja">
+              <img src="https://flagcdn.com/w40/jp.png" alt="ja" class="flag-icon">
+              <span>日本語</span>
+            </div>
+            <div class="lang-item" data-value="ko">
+              <img src="https://flagcdn.com/w40/kr.png" alt="ko" class="flag-icon">
+              <span>한국어</span>
+            </div>
+            <div class="lang-item" data-value="zh">
+              <img src="https://flagcdn.com/w40/cn.png" alt="zh" class="flag-icon">
+              <span>中文</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn" id="sync-btn">Đồng Bộ</button>
+      <button class="btn" id="show-profile-btn"
+        style="background: #1f2937; color: #fff; margin-right:8px; display: inline-flex; align-items: center; justify-content: center;">👤
+        Đăng nhập / Hồ sơ</button>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="main-layout">
+    <!-- Stall list on the left side -->
+    <div class="stall-panel">
+      <div class="stall-list-panel">
+        <div class="stall-list-title" id="stall-list-title">Danh sách quán</div>
+        <div class="stall-filter-label">Bộ lọc quán</div>
+        <div class="stall-search-bar">
+          <input type="text" id="stall-search-input" placeholder="Tìm quán theo tên hoặc loại món...">
+          <select id="stall-search-type">
+            <option value="name">Tên quán</option>
+            <option value="type">Loại món</option>
+          </select>
+          <button class="btn stall-search-btn" id="stall-search-btn">Tìm</button>
+        </div>
+      </div>
+      <div id="stall-list" class="stall-list"></div>
+    </div>
+
+    <!-- Map Area -->
+    <div class="map-container-wrapper">
+      <div id="map"></div>
+
+      <!-- Active Triggered Food Stall Card -->
+      <div class="active-stall-card" id="stall-card">
+        <div class="card-header">
+          <h2 id="stall-name">Tên Quán</h2>
+          <span id="stall-distance">0m</span>
+        </div>
+        <p class="address" id="stall-address">Địa chỉ</p>
+        <div class="description" id="stall-description">
+          Đang tải thuyết minh...
+        </div>
+        <div class="audio-control-bar"
+          style="margin-top: 12px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+          <button class="btn" id="view-menu-btn"
+            style="padding: 6px 14px; font-size: 12px; background: #10B981; border-radius: 6px; display: flex; align-items: center; gap: 6px; cursor: pointer;">
+            <span>☰</span> <span>Mở xem menu chi tiết</span>
+          </button>
+          <button class="btn" id="play-audio-btn"
+            style="padding: 6px 14px; font-size: 12px; background: #FF7A00; border-radius: 6px; display: flex; align-items: center; gap: 6px; cursor: pointer;">
+            <span id="play-btn-icon">▶</span> <span id="play-btn-text">Bắt đầu nghe thuyết minh</span>
+          </button>
+          <button class="btn" id="directions-btn"
+            style="padding: 6px 14px; font-size: 12px; background: #3b82f6; border-radius: 6px; display: flex; align-items: center; gap: 6px; cursor: pointer;">
+            <span>📍</span> <span data-i18n="directionsBtn">Chỉ Đường</span>
+          </button>
+          <span id="audio-status" style="font-size: 11px; color: var(--text-gray);">Sẵn sàng</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Chat Assistant on the right -->
+    <div class="chat-panel">
+      <div class="chat-header">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF7A00" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <h3>TRỢ LÝ TOUR HƯỚNG DẪN VIÊN AI</h3>
+      </div>
+
+      <div class="chat-log" id="chat-log">
+        <div class="bubble ai">
+          Xin chào! Tôi là Trợ Lý AI của phố ẩm thực Quận 4. Hãy đặt bất kỳ câu hỏi nào về các quán ăn, gợi ý món ăn,
+          hoặc nhờ tôi lên lịch trình food tour Quận 4 cho bạn nhé!
+        </div>
+      </div>
+
+      <div class="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Hỏi AI (Ví dụ: gợi ý quán ốc ngon...)">
+        <button class="btn" id="chat-send-btn">Gửi</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Notification bar at bottom of header -->
+  <div
+    style="background: rgba(255, 122, 0, 0.1); border-bottom: 1px solid rgba(255, 122, 0, 0.2); padding: 6px 24px; font-size: 11px; color: #ff9d42; display: flex; justify-content: space-between; z-index: 999;"
+    id="status-bar">
+    <span id="sync-status" data-state="ready">Hệ thống sẵn sàng. Vui lòng Đồng bộ để cập nhật dữ liệu.</span>
+    <span id="gps-status" data-state="off">GPS: Tắt</span>
+  </div>
+
+  <div class="menu-modal" id="menu-modal" role="dialog" aria-modal="true" aria-labelledby="menu-modal-title">
+    <div class="menu-modal-panel">
+      <div class="menu-header">
+        <h3 id="menu-modal-title">Menu quán</h3>
+        <button class="menu-close-btn" id="menu-modal-close" type="button">Đóng</button>
+      </div>
+      <div class="menu-message" id="menu-modal-message">Đang tải menu...</div>
+      <div class="menu-carousel" id="menu-carousel">
+        <button class="carousel-nav prev" id="menu-prev" aria-label="Previous">‹</button>
+        <div class="menu-viewport">
+          <div class="menu-slides" id="menu-images-container"></div>
+        </div>
+        <button class="carousel-nav next" id="menu-next" aria-label="Next">›</button>
+      </div>
+      <div class="carousel-indicators" id="menu-carousel-indicators" aria-hidden="false"></div>
+    </div>
+  </div>
+
+  <audio id="audio-player" style="display: none;"></audio>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="mobile-bottom-nav" id="mobile-bottom-nav">
+    <div class="nav-item active" data-view="map">
+      <span class="nav-icon">🗺️</span>
+      <span class="nav-label">Bản đồ</span>
+    </div>
+    <div class="nav-item" data-view="list">
+      <span class="nav-icon">📋</span>
+      <span class="nav-label">Danh sách</span>
+    </div>
+    <div class="nav-item" data-view="ai">
+      <span class="nav-icon">🤖</span>
+      <span class="nav-label">Trợ lý AI</span>
+    </div>
+    <div class="nav-item" id="nav-profile-btn" data-view="profile">
+      <span class="nav-icon">👤</span>
+      <span class="nav-label">Hồ sơ</span>
+    </div>
+  </nav>
+
+  <!-- Mobile FABs Container -->
+  <div class="mobile-fabs-container" id="mobile-fabs-container">
+    <button class="btn fab-btn" id="mobile-gps-btn">🌍</button>
+    <button class="btn fab-btn" id="mobile-sync-btn">🔄</button>
+    <button class="btn fab-btn" id="mobile-lang-btn" style="padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); width: 44px; height: 44px;" aria-label="Language Selector">
+      <img id="mobile-lang-flag" src="https://flagcdn.com/w40/vn.png" style="width: 100%; height: 100%; object-fit: cover;" alt="lang">
+    </button>
+  </div>
+
+  <!-- Menu Modal -->
+  <div class="menu-modal" id="menu-modal" role="dialog" aria-modal="true" aria-labelledby="menu-modal-title">
+    <div class="menu-modal-panel">
+      <div class="menu-header">
+        <h3 id="menu-modal-title">Menu quán</h3>
+        <button class="menu-close-btn" id="menu-modal-close" type="button">Đóng</button>
+      </div>
+      <div class="menu-message" id="menu-modal-message">Đang tải menu...</div>
+      <div class="menu-carousel" id="menu-carousel">
+        <button class="carousel-nav prev" id="menu-prev" aria-label="Previous">‹</button>
+        <div class="menu-viewport">
+          <div class="menu-slides" id="menu-images-container"></div>
+        </div>
+        <button class="carousel-nav next" id="menu-next" aria-label="Next">›</button>
+      </div>
+      <div class="carousel-indicators" id="menu-carousel-indicators" aria-hidden="false"></div>
+    </div>
+  </div>
+
+  <!-- Profile Modal -->
+  <div id="profile-modal" class="modal"
+    style="display:none; position:fixed; right:16px; top:72px; width:300px; background:#111827; color:#fff; border:1px solid rgba(255,255,255,0.06); border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,0.5); z-index:1200; padding:12px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+      <strong id="profile-modal-title" data-i18n="profileModalTitle">Thông tin người dùng</strong>
+      <button id="profile-close-btn"
+        style="background:transparent; border:none; color:#fff; font-size:16px; cursor:pointer;">✕</button>
+    </div>
+    <div id="profile-content" style="font-size:13px; line-height:1.4;">
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+        <img id="profile-avatar-img" src="" alt="avatar"
+          style="width:56px; height:56px; border-radius:8px; object-fit:cover; background:#222;" />
+        <div style="flex:1;">
+          <div style="font-size:13px; color:#ccc;" data-i18n="profileAvatarLabel">Ảnh đại diện</div>
+          <input type="file" id="profile-avatar-input" accept="image/*" style="margin-top:6px; width:100%;" />
+          <button id="profile-avatar-upload-btn" class="btn" style="margin-top:6px; background:#2563eb;"
+            data-i18n="profileUploadBtn">Tải lên</button>
+        </div>
+      </div>
+      <div><strong data-i18n="profileLabelUsername">Tên đăng nhập:</strong> <span id="profile-username">-</span></div>
+      <div><strong data-i18n="profileLabelFullname">Họ & tên:</strong> <span id="profile-fullname">-</span></div>
+      <div><strong data-i18n="profileLabelEmail">Email:</strong> <span id="profile-email">-</span></div>
+      <div><strong data-i18n="profileLabelPhone">Điện thoại:</strong> <span id="profile-phone">-</span></div>
+      <div><strong data-i18n="profileLabelRole">Vai trò:</strong> <span id="profile-role">-</span></div>
+      <div><strong data-i18n="profileLabelUserId">ID người dùng:</strong> <span id="profile-userid">-</span></div>
+      <div><strong data-i18n="profileLabelDevice">Device ID:</strong> <span id="profile-device">-</span></div>
+      <div style="margin-top:12px; display:flex; gap:8px;">
+        <button id="profile-logout-btn" class="btn" style="background:#ef4444; flex:1;"
+          data-i18n="profileLogoutBtn">Đăng xuất</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main controller module -->
+  <script src="payment-gate.js?v=1"></script>
+  <script src="particles.js"></script>
+  <script>
+    // Diagnostic: ensure module script is added after DOM
+    const s = document.createElement('script');
+    s.type = 'module';
+    s.src = 'app.js?v=18';
+    s.onload = () => console.debug('app.js module loaded');
+    s.onerror = (e) => console.error('Failed to load app.js', e);
+    document.body.appendChild(s);
+  </script>
+</body>
+
+</html>
