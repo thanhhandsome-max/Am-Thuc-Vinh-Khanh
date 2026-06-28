@@ -103,3 +103,4 @@ class ParticleSystem {
 document.addEventListener('DOMContentLoaded', () => {
   new ParticleSystem('particle-canvas');
 });
+

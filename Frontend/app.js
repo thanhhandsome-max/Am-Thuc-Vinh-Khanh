@@ -807,24 +807,7 @@ async function initApp() {
   }
 
   // Set default server URL after DOM ready
-  defaultServerUrl = (() => {
-    if (window.location.protocol === 'file:') {
-      return 'https://am-thuc-vinh-khanh.onrender.com';
-    }
-    if (window.location.port === '5080' || window.location.port === '7089') {
-      return window.location.origin;
-    }
-    if ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port === '5241') {
-      return `${window.location.protocol}//${window.location.hostname}:5080`;
-    }
-    if (window.location.port === '3000' || window.location.port === '4173' || window.location.port === '4200') {
-      return `${window.location.protocol}//${window.location.hostname}:5080`;
-    }
-    if (window.location.protocol === 'https:') {
-      return `${window.location.protocol}//${window.location.hostname}:7089`;
-    }
-    return `${window.location.protocol}//${window.location.hostname}:5080`;
-  })();
+  defaultServerUrl = "https://am-thuc-vinh-khanh.onrender.com";
   serverUrlInput.value = defaultServerUrl;
 
   console.debug('All DOM elements initialized', {
@@ -2275,3 +2258,6 @@ if (document.readyState === 'loading') {
 } else {
   runMobilePwaUiLogic();
 }
+
+
+

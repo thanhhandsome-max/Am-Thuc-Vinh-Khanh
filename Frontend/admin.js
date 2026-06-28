@@ -1,6 +1,4 @@
-const defaultServerUrl = window.location.port === '3000'
-  ? `${window.location.protocol}//${window.location.hostname}:5080`
-  : (window.location.port === '5080' ? window.location.origin : `${window.location.protocol}//${window.location.hostname}:5080`);
+const defaultServerUrl = "https://am-thuc-vinh-khanh.onrender.com";
 
 const role = localStorage.getItem('userRole');
 const username = localStorage.getItem('username');
@@ -1330,3 +1328,4 @@ window.viewStallDetails = async (id) => {
     detailModalBody.innerHTML = '<div style="color:#ef4444;text-align:center;padding:20px;">Lỗi kết nối máy chủ.</div>';
   }
 };
+
