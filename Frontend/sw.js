@@ -1,4 +1,4 @@
-const CACHE_NAME = 'oc-quan4-cache-v14';
+const CACHE_NAME = 'oc-quan4-cache-v15';
 const ASSETS_TO_CACHE = [
   './index.html',
   './style.css?v=4',
