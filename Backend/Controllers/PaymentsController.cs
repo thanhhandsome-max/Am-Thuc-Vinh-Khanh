@@ -239,9 +239,10 @@ namespace Backend.Controllers
                 returnUrl = returnUrl + (returnUrl.Contains("?") ? "&" : "?") + "clientReturnUrl=" + System.Net.WebUtility.UrlEncode(clientReturnUrl);
             }
 
-            var txnRef = $"{user.Id:N}{DateTime.UtcNow:yyyyMMddHHmmss}";
+            var vnTime = DateTime.UtcNow.AddHours(7);
+            var txnRef = $"{user.Id:N}{vnTime:yyyyMMddHHmmss}";
             var ipAddress = GetClientIpAddress();
-            var createDate = DateTime.UtcNow.ToString("yyyyMMddHHmmss");
+            var createDate = vnTime.ToString("yyyyMMddHHmmss");
 
             var parameters = new SortedDictionary<string, string>(StringComparer.Ordinal)
             {
