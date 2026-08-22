@@ -233,7 +233,12 @@ namespace Backend.Controllers
             var returnUrl = _configuration["VNPAY_RETURN_URL"] ?? _configuration["Vnpay:ReturnUrl"];
             if (string.IsNullOrWhiteSpace(returnUrl))
             {
-                returnUrl = $"{Request.Scheme}://{Request.Host}/api/payments/return";
+                var scheme = Request.Headers["X-Forwarded-Proto"].FirstOrDefault() ?? Request.Scheme;
+                if (scheme == "http" && Request.Host.Host.Contains("onrender.com"))
+                {
+                    scheme = "https"; // Force HTTPS on Render
+                }
+                returnUrl = $"{scheme}://{Request.Host}/api/payments/return";
             }
 
             if (!string.IsNullOrWhiteSpace(clientReturnUrl))
