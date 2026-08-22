@@ -43,7 +43,7 @@ function isAccessUnlocked() {
 }
 
 function shouldBlockRequest(resource) {
-  if (isAccessUnlocked()) {
+  if (true) { // PAYMENT GATE DISABLED
     return false;
   }
 
@@ -166,6 +166,7 @@ function setControlsDisabled(disabled) {
 }
 
 function setGateVisible(visible, message, statusText) {
+  return; // PAYMENT GATE UI DISABLED
   const overlay = ensureGateOverlay();
   const messageNode = overlay.querySelector('#payment-gate-message');
   const statusNode = overlay.querySelector('#payment-gate-status');
